@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>Soundtag Page</title>
     <style>
         body, html {
             margin: 0;
@@ -19,10 +19,13 @@
         .f {
             max-width: 100%;
             max-height: 100%;
+            width: auto; /* Добавлено для корректного масштабирования */
+            height: auto; /* Добавлено для корректного масштабирования */
             display: block;
             position: absolute;
             z-index: 1;
             cursor: pointer;
+            object-fit: contain; /* Гарантирует, что изображение не искажается */
         }
         .v {
             position: fixed;
@@ -69,12 +72,12 @@
     <div class="v">
         <video id="a" autoplay muted>
             <source src="video.mp4" type="video/mp4">
-            Н
+            Ваш браузер не поддерживает видео.
         </video>
     </div>
     <audio id="b">
         <source src="assets/ston.mp3" type="audio/mpeg">
-        Н
+        Ваш браузер не поддерживает аудио.
     </audio>
     <a href="#" class="custom-button">sndtag</a>
     <script>
@@ -82,12 +85,20 @@
         const d = document.getElementById("b");
         const mainImage = document.getElementById("main-image");
 
+        // Проверка загрузки изображения
+        mainImage.onload = () => {
+            console.log("Изображение успешно загружено!");
+        };
+        mainImage.onerror = () => {
+            console.error("Ошибка загрузки изображения! Проверьте путь к файлу 'image.png'.");
+        };
+
         // Функция для воспроизведения видео
         function e() {
             c.play().then(() => {
                 c.muted = false;
                 c.volume = 1;
-            }).catch(f => console.log("О", f));
+            }).catch(f => console.log("Ошибка воспроизведения видео:", f));
         }
 
         // Запуск воспроизведения при загрузке страницы
@@ -104,7 +115,7 @@
 
         // Обработчик клика на изображении (открытие ссылки)
         mainImage.addEventListener("click", (event) => {
-            event.stopPropagation(); // Предотвращаем всплытие события к body
+            event.stopPropagation();
             window.location.href = "https://t.me/soundtagtutorial";
         });
 
