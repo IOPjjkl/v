@@ -22,7 +22,7 @@
             display: block;
             position: absolute;
             z-index: 1;
-            cursor: pointer; /* Указывает, что изображение кликабельно */
+            cursor: pointer;
         }
         .v {
             position: fixed;
@@ -64,8 +64,8 @@
         }
     </style>
 </head>
-<body onclick="d.volume=1; d.play()">
-    <img src="image.png" alt="Ф" class="f" onclick="window.location.href='https://t.me/soundtagtutorial'">
+<body>
+    <img src="image.png" alt="Ф" class="f" id="main-image">
     <div class="v">
         <video id="a" autoplay muted>
             <source src="video.mp4" type="video/mp4">
@@ -76,10 +76,13 @@
         <source src="assets/ston.mp3" type="audio/mpeg">
         Н
     </audio>
+    <a href="#" class="custom-button">sndtag</a>
     <script>
         const c = document.getElementById("a");
         const d = document.getElementById("b");
+        const mainImage = document.getElementById("main-image");
 
+        // Функция для воспроизведения видео
         function e() {
             c.play().then(() => {
                 c.muted = false;
@@ -87,8 +90,10 @@
             }).catch(f => console.log("О", f));
         }
 
+        // Запуск воспроизведения при загрузке страницы
         window.onload = e;
 
+        // Остановка видео и запуск аудио через 2 секунды
         c.ontimeupdate = () => {
             if (c.currentTime >= 2) {
                 c.pause();
@@ -96,7 +101,18 @@
                 d.play();
             }
         };
+
+        // Обработчик клика на изображении (открытие ссылки)
+        mainImage.addEventListener("click", (event) => {
+            event.stopPropagation(); // Предотвращаем всплытие события к body
+            window.location.href = "https://t.me/soundtagtutorial";
+        });
+
+        // Обработчик клика на body (воспроизведение звука)
+        document.body.addEventListener("click", (event) => {
+            d.volume = 1;
+            d.play();
+        });
     </script>
-    <a href="#" class="custom-button">sndtag</a>
 </body>
 </html>
