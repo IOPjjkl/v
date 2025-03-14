@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>1</title> <!-- Название сайта -->
+    <title>1</title>
     <style>
         body, html {
             margin: 0;
@@ -14,18 +14,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative; /* Для корректного позиционирования элементов */
+            position: relative;
         }
         .f {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto; /* Для корректного масштабирования */
-            height: auto; /* Для корректного масштабирования */
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             display: block;
             position: absolute;
             z-index: 1;
-            cursor: pointer; /* Указывает на кликабельность */
-            object-fit: contain; /* Предотвращает искажение изображения */
+            cursor: pointer;
         }
         .v {
             position: fixed;
@@ -42,42 +40,31 @@
     </style>
 </head>
 <body>
-    <img src="image.png" alt="Ф" class="f" id="main-image">
+    <img src="image.png" alt="Ф" class="f" id="main-image" onerror="console.error('Ошибка загрузки изображения. Проверьте путь к файлу image.png')">
     <div class="v">
         <video id="a" autoplay muted>
             <source src="video.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
+            Н
         </video>
     </div>
     <audio id="b">
         <source src="assets/ston.mp3" type="audio/mpeg">
-        Ваш браузер не поддерживает аудио.
+        Н
     </audio>
     <script>
         const c = document.getElementById("a");
         const d = document.getElementById("b");
         const mainImage = document.getElementById("main-image");
 
-        // Проверка загрузки изображения
-        mainImage.onload = () => {
-            console.log("Изображение успешно загружено!");
-        };
-        mainImage.onerror = () => {
-            console.error("Ошибка загрузки изображения! Проверьте путь к файлу 'image.png'.");
-        };
-
-        // Функция для воспроизведения видео при загрузке страницы
         function e() {
             c.play().then(() => {
                 c.muted = false;
                 c.volume = 1;
-            }).catch(f => console.log("Ошибка воспроизведения видео:", f));
+            }).catch(f => console.log("О", f));
         }
 
-        // Запуск воспроизведения видео при загрузке страницы
         window.onload = e;
 
-        // Остановка видео и запуск аудио через 2 секунды
         c.ontimeupdate = () => {
             if (c.currentTime >= 2) {
                 c.pause();
@@ -86,19 +73,14 @@
             }
         };
 
-        // Обработчик клика на изображении
         mainImage.addEventListener("click", (event) => {
-            event.stopPropagation(); // Предотвращаем всплытие события
-            // Воспроизведение звука
+            event.stopPropagation();
             d.volume = 1;
             d.play();
-            // Открытие ссылки
             window.location.href = "https://t.me/soundtagtutorial";
         });
 
-        // Обработчик клика на body (воспроизведение звука)
         document.body.addEventListener("click", (event) => {
-            // Проверяем, что клик был не по изображению
             if (!event.target.closest("#main-image")) {
                 d.volume = 1;
                 d.play();
