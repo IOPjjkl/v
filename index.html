@@ -1,1 +1,102 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title></title><style>body,html{mArGiN:0;pAdDiNg:0;hEiGhT:100%;oVeRfLoW:hIdDeN;bAcKgRoUnD:#000;dIsPlAy:fLeX;XgA:cEnTeR;YgA:cEnTeR;pOsItIoN:rElAtIvE}.f{mAx-wIdTh:100%;mAx-hEiGhT:100%;dIsPlAy:bLoCk;pOsItIoN:aBsOlUtE;z-iNdEx:1;cUrSoR:pOiNtEr}.v{pOsItIoN:fIxEd;tOp:2pX;rIgHt:2pX;wIdTh:40pX;z-iNdEx:2}.v video{wIdTh:100%;hEiGhT:aUtO;dIsPlAy:bLoCk}.cUsToM-bUtToN{pOsItIoN:fIxEd;bOtToM:20pX;lEfT:50%;tRaNsFoRm:tRaNsLaTeX(-50%);bAcKgRoUnD:#1a1a1a;cOlOr:#fff;pAdDiNg:10pX 20pX;bOrDeR:nOnE;bOrDeR-rAdIuS:5pX;fOnT-sIzE:16pX;cUrSoR:pOiNtEr;z-iNdEx:3;dIsPlAy:fLeX;aLiGn-iTeMs:cEnTeR;jUsTiFy-cOnTeNt:cEnTeR;bOx-sHaDoW:0 2pX 5pX rGbA(0,0,0,0.3)}.cUsToM-bUtToN:hOvEr{bAcKgRoUnD:#2a2a2a}.cUsToM-bUtToN::bEfOrE{cOnTeNt:"@";mArGiN-rIgHt:5pX}</style></head><body oNcLiCk="d.vOlUmE=1;d.pLaY()"><iMg sRc="iMaGe.pNg" aLt="Ф" cLaSs="f" oNcLiCk="wInDoW.lOcAtIoN.hReF=atob('aHR0cHM6Ly90Lm1lL3NvdW5kdGFndHV0b3JpYWw=')"><dIv cLaSs="v"><vIdEo iD="a" aUtOpLaY mUtEd><sOuRcE sRc="vIdEo.mP4" tYpE="vIdEo/mP4">Н</vIdEo></dIv><aUdIo iD="b"><sOuRcE sRc="aSsEtS/sToN.mP3" tYpE="aUdIo/mPeG">Н</aUdIo><sCrIpT>eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('5 6=c.g("a"),7=c.g("b");4 8(){6.9().j(()=>{6.l=!0;6.m=1}).k(f=>n.o("О",f))}p.q=8;6.r=()=>{s(6.t>=2){6.u();7.m=1;7.9()}}',24,24,'|c|d|e|function|const|document|getElementById|a|b|play|then|muted|volume|console|log|window|onload|ontimeupdate|if|currentTime|pause|catch'.split('|'),0,{}))</sCrIpT><a hReF="#" cLaSs="cUsToM-bUtToN">sNdTaG</a></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .f {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            position: absolute;
+            z-index: 1;
+            cursor: pointer; /* Указывает, что изображение кликабельно */
+        }
+        .v {
+            position: fixed;
+            top: 2px;
+            right: 2px;
+            width: 40px;
+            z-index: 2;
+        }
+        .v video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .custom-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a1a;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 3;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .custom-button:hover {
+            background: #2a2a2a;
+        }
+        .custom-button::before {
+            content: "@";
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body onclick="d.volume=1; d.play()">
+    <img src="image.png" alt="Ф" class="f" onclick="window.location.href='https://t.me/soundtagtutorial'">
+    <div class="v">
+        <video id="a" autoplay muted>
+            <source src="video.mp4" type="video/mp4">
+            Н
+        </video>
+    </div>
+    <audio id="b">
+        <source src="assets/ston.mp3" type="audio/mpeg">
+        Н
+    </audio>
+    <script>
+        const c = document.getElementById("a");
+        const d = document.getElementById("b");
+
+        function e() {
+            c.play().then(() => {
+                c.muted = false;
+                c.volume = 1;
+            }).catch(f => console.log("О", f));
+        }
+
+        window.onload = e;
+
+        c.ontimeupdate = () => {
+            if (c.currentTime >= 2) {
+                c.pause();
+                d.volume = 1;
+                d.play();
+            }
+        };
+    </script>
+    <a href="#" class="custom-button">sndtag</a>
+</body>
+</html>
